@@ -5,10 +5,10 @@
 import math
 
 p1 = [55, 66, 77]
-p2 = [88, 99, 11]
+p2 = [880000, 990000, 1100000]
 
-distance = sum((a - b)**2 for a, b in zip(p1, p2) )
-
-print(f'ระยะห่างคือ: {distance}')
+sum_of_squares = sum((a - b)**2 for a, b in zip(p1, p2) )
+distance = math.sqrt(sum_of_squares)
+print(f'ระยะห่างคือ: {distance:,.2f}')
 
 
