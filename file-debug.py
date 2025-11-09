@@ -1,8 +1,12 @@
-def final_check():
-    amount = 5000
-    balance = 3000
-    is_verified = False
+def suppress_alert():
+    error_code = 4040
+    retry_count = 4
+    is_maintenance = False 
 
-    check_trans = amount > balance or not is_verified
-    print(check_trans)
-final_check()
+    check_alert = (error_code == 200      \
+                   or error_code == 404)  \
+                   or is_maintenance 
+    
+    print(check_alert)
+
+suppress_alert()
