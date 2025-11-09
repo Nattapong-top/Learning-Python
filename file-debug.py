@@ -1,10 +1,8 @@
-def scores():
-    score1 = (95, 120)
-    score2 = (95, 110)
-    
-    check1 = score2[0] > score1[0]
-    
-    check2 = (score2[0] == score1[0]) and score2[1] < score1[1]
-    
-    print(check1 or check2)
-scores()
+def final_check():
+    amount = 5000
+    balance = 3000
+    is_verified = False
+
+    check_trans = amount > balance or not is_verified
+    print(check_trans)
+final_check()
