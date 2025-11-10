@@ -1,12 +1,13 @@
-def suppress_alert():
-    error_code = 4040
-    retry_count = 4
-    is_maintenance = False 
-
-    check_alert = (error_code == 200      \
-                   or error_code == 404)  \
-                   or is_maintenance 
+def input_num_n():
+    n = int(input())
+    total_sum = 0
     
-    print(check_alert)
+    while n > 0:
+        #total_sum += n
 
-suppress_alert()
+        if n > 0:
+            total_sum += n
+        n = int(input('ป้อนตัวเลข: '))
+
+    print(f'ผลรวม: {total_sum}')
+input_num_n()
