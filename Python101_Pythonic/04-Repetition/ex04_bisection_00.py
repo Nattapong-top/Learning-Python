@@ -34,6 +34,5 @@ def bisection2():
         r3 = pow(r, 3)
 
     print(r)
-bisection2()
+# bisection2()
         
-
