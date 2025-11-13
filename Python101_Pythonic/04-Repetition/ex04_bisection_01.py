@@ -41,7 +41,7 @@ def f05(x:float):
 
 '''🛠️ โครงสร้าง Bisection ฉบับสมบูรณ์'''
 
-def solve_bisection(L, U, x_target):
+def solve_bisection(L, U):
     # L และ U คือช่วงเริ่มต้น
     # x_target คือค่าที่โจทย์ต้องการ
 
@@ -61,5 +61,5 @@ def solve_bisection(L, U, x_target):
     result = (L+U) / 2
     print(f'รากของสมการคือ: {result:.6f}')
 
-solve_bisection(L=3, U=5, x_target=4)
+solve_bisection(L=3, U=6, )
 
