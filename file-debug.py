@@ -1,9 +1,9 @@
 def ex04_04_14():
-    t = 'ABCabcAABCABAABC'
-
+    t = 'ABCabcAABCABAABC'#input()
     count = 0
-    for i, v in enumerate(t,1):
-        if v[i:i+3] == 'ABC':
+    pattern = 'ABC'
+    for i in range(len(t)):
+        if t[i:].startswith(pattern):
             count += 1
     print(count)
 ex04_04_14()
