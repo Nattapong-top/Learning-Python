@@ -13,7 +13,7 @@ def for_total_sum():
         if num % 3 == 0:
             total_sum += num
     print(f'total sum: {total_sum}')
-for_total_sum()
+# for_total_sum()
 
 '''
 ข้อที่ 2: เด็กแนว (พิมพ์ถอยหลัง)
@@ -41,13 +41,13 @@ def for_adjacent_pairs():
     print()
     s = 'Bookkeeper' # input(': ')
     count = 0
+
     for i in range(len(s)-1):
-        s = s.lower()
 
         if s[i] == s[i+1]:
             count += 1
     
-    print(f': {count}')
+    print(f'count: {count}')
 for_adjacent_pairs()
 
 '''
