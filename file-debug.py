@@ -1,32 +1,9 @@
-# 1. นำเข้า math (ถ้าจำเป็น)
-import math 
+def ex04_04_14():
+    t = 'ABCabcAABCABAABC'
 
-# 2. ฟังก์ชันสมการ (เปลี่ยนไปตามโจทย์)
-def f(x):
-    return x**3 - 10 # ตัวอย่างจากโจทย์ข้อ 2
-
-# 3. กำหนดตัวแปรและลูป (ใช้โค้ด while ที่ป๋าเขียนไว้)
-def solve_bisection(L, U, x_target):
-    # L และ U คือช่วงเริ่มต้นที่หาได้จากเฉลย
-    # x_target คือค่าที่โจทย์ต้องการ (ในกรณีที่ f(x) = 0)
-    
-    # เราใช้ 1e-6 (1 x 10^-6) เป็นค่าความคลาดเคลื่อน (epsilon)
-    
-    r = (L + U) / 2
-    f_r = f(r)
-
-    # ใช้เงื่อนไขหยุดลูปที่ป๋าเขียนไว้ก่อนหน้า
-    while abs(f_r) > 1e-6: # อาจใช้ while abs(L-U) > 1e-6 ก็ได้
-        
-        r = (L + U) / 2
-        f_r = f(r)
-        
-        # ตรวจสอบเครื่องหมาย
-        if f_r > 0:
-            U = r
-        else:
-            L = r
-            
-    print(f"รากของสมการคือ: {r}")
-
-solve_bisection(L=2, U=3, x_target=10)
+    count = 0
+    for i, v in enumerate(t,1):
+        if v[i:i+3] == 'ABC':
+            count += 1
+    print(count)
+ex04_04_14()
