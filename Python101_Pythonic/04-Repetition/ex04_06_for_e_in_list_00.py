@@ -5,9 +5,11 @@ input นำรหัสสินค้าจากซ้ายไปขวา�
 E101 E123 E323 E493 E928 E883'''
 def check_product(prod_ids:str):
 
-    prod_list = prod_ids.strip().split()
+    # แบบธรรมดา เอามา split() ก่อนแล้วค่อยไป for
+    #prod_list = prod_ids.split()
 
-    for e in prod_list:
+    # เราสามารถ split() ที่  for เลยก็ได้
+    for e in prod_ids.split():
         print('Product ID:', e)
     
 check_product('E101 E123 E323 E493 E928 E883')
@@ -21,12 +23,22 @@ input นำเฉพาะรหัสสินค้าจากขวาม�
 Electrical Appliances: E101 E123 E323 E493 E928 E883'''
 def split_product_name_id(data_id:str):
 
-    product_name_str, product_id_str = data_id.strip().split(':')
-    list_product_id = list(product_id_str.split())
+    product_name_str, product_id_str = data_id.split(':')
+    
+    # ตอน .split() ไม่จำเป็นต้องใช้ list(...) 
+    # เพราะ split ออกมาจะเป็น list อยู่แล้ว
+    # list_product_id = list(product_id_str.split())
+    
+    # สูตรประหยัดตัวแปร ไป split() ที่ for เลย
+    # list_product_id = product_id_str.split()
 
     print(product_name_str)
     
-    for prod_id in list_product_id[::-1]:
+
+    #  วิธีที่ 1 list_product_id[::-1]:
+    #  วิธีที่ 2 reversed(list_product_id)
+    #  หรืออยากประหยัดตัวแปร ก็มา split() ที่ for เลยก็ได้
+    for prod_id in reversed(product_id_str.split()):
         print(prod_id)
 
 split_product_name_id('Electrical Appliances: E101 E123 E323 E493 E928 E883')
@@ -37,14 +49,18 @@ print('============ End Function ============\n')
 X Y Z XY XYZ XYZ XY | XYZ'''
 def list_compar(x:str, a:str):
 
-    list_x = list(x.split())
+    # ไม่ต้อง list(x.split) เพราะ .split เป็น list อยู่แล้ว
+    list_x = x.split()
 
-    count = 0
+    # count = 0
 
-    for e in list_x:
-        if e == a:
-            count += 1
-    
+    # for e in list_x:
+    #     if e == a:
+    #         count += 1
+
+    # วิธีที่ pythonic ในการนับจำนวน a ใน list_x คือ
+    count = list_x.count(a)
+
     print('a in x =', count)
 
 list_compar('X Y Z XY XYZ XYZ XY', 'XYZ')
