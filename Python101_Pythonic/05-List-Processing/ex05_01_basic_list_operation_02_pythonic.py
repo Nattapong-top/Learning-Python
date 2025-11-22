@@ -105,7 +105,7 @@ def check_movies(movies:str, duration:str):
     movies = movies.split()
     list_duration = [float(d) for d in duration.split()]
 
-    movies_over_100m = [m for m, d in zip(movies, list_duration) if d >= 100]
+    movies_over_100m = [m for m, d in zip(movies, list_duration) if d <= 100]
     
     if movies_over_100m:
         print(*movies_over_100m, sep='\n')
@@ -113,5 +113,5 @@ def check_movies(movies:str, duration:str):
         print('No short movies')
 
 movies = 'แฟนฉัน โกยเถอะโยม เจ็ดประจันบาน'
-duration = '180 220 210'
+duration = '80 20 10'
 check_movies(movies=movies, duration=duration)
