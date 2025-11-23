@@ -27,11 +27,11 @@ add_staffs()
 โจทย์: มีหัวหน้าชื่อ "Boss" ต้องการแทรกคิวมาอยู่ที่ ตำแหน่งแรกสุด (Index 0) 
 จงเขียนคำสั่งแทรก Boss เข้าไป'''
 
-def insetr_staff():
+def Insert_staff():
     staffs.insert(0, 'Boss')
     print(staffs)
 
-insetr_staff()
+Insert_staff()
 
 
 '''ข้อที่ 3: ลบคนผิด (Remove) ตอนนี้ List คือ 
@@ -123,12 +123,12 @@ print('============ End Function ============\n')
 เพื่อนร่วมงานฝากงาน ให้ แทรก งาน "ซื้อกาแฟ" ไปไว้ หน้า การกินข้าวเที่ยง 
 (กินข้าวเที่ยงเดิมอยู่ index 2 แต่หลังจากแทรกงานแรก index อาจจะเปลี่ยน ลองนับดูดีๆ นะครับ)
 พิมพ์ todo ออกมาดู'''
-def insort_list_todo():
+def Insert_list_todo():
     todo = ["เช็คอีเมล", "เขียนรายงาน", "กินข้าวเที่ยง"]
 
     while True:
         print('1. show todo')
-        print('2. insort todo')
+        print('2. Insert todo')
         print('q ออก')
         
         acction = input('พิมพ์ 1 หรือ 2 q ออก: ')
@@ -141,12 +141,12 @@ def insort_list_todo():
             print(todo)
         
         elif acction == '2':
-            print('Insort todo')
-            num_index, intodo = input('index, เรื่อง: ').split(', ')
-            todo.insert(int(num_index), intodo)
+            print('Insert todo')
+            num_index, intodo = input('index, เรื่อง: ').split(',')
+            todo.insert(int(num_index), intodo.strip())
             print(todo)
 
-# insort_list_todo()
+# Insert_list_todo()
 print('============ End Function ============\n')
 
 '''ข้อที่ 3: ลบโปรแกรมที่ไม่ใช้ (Remove)
@@ -175,7 +175,7 @@ def remove_list_programs():
             print('ออกจากโปรแกรม')
             break
 
-remove_list_programs()
+# remove_list_programs()
 print('============ End Function ============\n')
 
 '''ข้อที่ 4: ปุ่ม Undo (Stack)
@@ -185,4 +185,25 @@ print('============ End Function ============\n')
 ผู้ใช้กด Undo 1 ครั้ง: ให้ ดึง ตัวสุดท้าย ("พิมพ์ ง.") ออกจาก List
 ผู้ใช้กด Undo อีก 1 ครั้ง: ให้ ดึง ตัวสุดท้าย (ตอนนี้คือ "พิมพ์ ค.") ออกอีก
 พิมพ์ actions ที่เหลือออกมา'''
+
+def pop_list_undo():
+
+    action = []
+
+    fake_actions = ["พิมพ์ ก.", "พิมพ์ ข.", "พิมพ์ ค.", "พิมพ์ ง."]
+    for i in fake_actions:
+        action.append(i)
+        print('append:', i)
+        time.sleep(1)
+
+    undo_num = 2
+    for i in range(undo_num):
+        undo = action.pop()
+        print('undo:', undo)
+        time.sleep(1)
+
+    print(action)
+
+pop_list_undo()
+
 
