@@ -1,9 +1,14 @@
-def ex04_04_14():
-    t = 'ABCabcAABCABAABC'#input()
-    count = 0
-    pattern = 'ABC'
-    for i in range(len(t)):
-        if t[i:].startswith(pattern):
-            count += 1
-    print(count)
-ex04_04_14()
+def sort_least(x:list):
+    y = False
+
+    for i in range(len(x) -1):
+        if x[i] > x[i+1]:
+            y = True
+            break
+    
+    if y:
+        print('NO')
+    else:
+        print('YES')
+
+sort_least(x=[1,2,3,8,6,6])
