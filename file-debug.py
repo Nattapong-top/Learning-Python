@@ -1,14 +1,10 @@
-def sort_least(x:list):
-    y = False
-
-    for i in range(len(x) -1):
-        if x[i] > x[i+1]:
-            y = True
-            break
-    
-    if y:
-        print('NO')
-    else:
-        print('YES')
-
-sort_least(x=[1,2,3,8,6,6])
+x = 'CBI ชบ BKK กทม CMI ชม KBI กบ KNN ขก'.split()
+eng = x[::2]
+th = x[1::2]
+q = 'กบ'
+if q in th:
+    print(eng[th.index(q)])
+elif q in eng:
+    print(th[eng.index(q)])
+else:
+    print('Not found')
