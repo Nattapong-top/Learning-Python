@@ -19,6 +19,7 @@ def fake_input(prompt_text):
     return ''
 
 input_test = fake_input
+
 '''------------------------------------------'''
 '''แบบฝึกหัด 5-8: Split & Join
 ผมเตรียมโจทย์มาให้ 4 ข้อ เพื่อปิดจบ บทที่ 5 อย่างสมบูรณ์ครับ
@@ -32,63 +33,72 @@ def split_ip():
     ip_addr = input_test('IP Address: ')
     
     # เขียนโค้ดแยกชิ้นส่วน
-    # parts = ...
+    parts = ip_addr.split('.')
     
     print('Parts:', parts)
 
 mock_inputs = list(all_test_data['sj_1'])
 split_ip()
-print('\n')
+print('============ End Function ============\n')
 
-'''ข้อที่ 2: สร้างแผนผังการส่งงาน (Join) โจทย์: มีรายชื่อคน ['Somsak', 'Somchai', 'Somsri'] จงเอามาต่อกันให้เป็น String เดียว โดยมีลูกศร -> คั่นกลาง Hint: ' -> '.join(list)
+'''ข้อที่ 2: สร้างแผนผังการส่งงาน (Join) 
+โจทย์: มีรายชื่อคน ['Somsak', 'Somchai', 'Somsri'] 
+จงเอามาต่อกันให้เป็น String เดียว โดยมีลูกศร -> คั่นกลาง Hint: ' -> '.join(list)
 '''
 
-'''def join_names():
+def join_names():
     print('--- ข้อ 2: Join Names ---')
     names_str = input_test('Names: ')
     names_list = names_str.split() # ได้ลิสต์มาก่อน
     
     # เขียนโค้ดรวมร่างด้วยลูกศร
-    # flow = ...
+    flow = ' -> '.join(names_list)
     
     print('Work Flow:', flow)
 
 mock_inputs = list(all_test_data['sj_2'])
 join_names()
-print('\n')
-ข้อที่ 3: ล้างเบอร์โทร (Combo Split & Join) โจทย์: รับเบอร์โทรที่มีขีด 081-123-4567 เข้ามา จงทำให้เป็นเบอร์สะอาด 0811234567 (ไม่มีขีด) เทคนิค: ใช้ split('-') เพื่อเอาก้อนตัวเลขออกมาก่อน แล้วใช้ join แบบไม่มีตัวคั่น ('') เชื่อมมันกลับเข้าไป
+print('============ End Function ============\n')
 
-งูหลาม
+'''
+ข้อที่ 3: ล้างเบอร์โทร (Combo Split & Join) โจทย์: รับเบอร์โทรที่มีขีด 081-123-4567 เข้ามา จงทำให้เป็นเบอร์สะอาด 0811234567 (ไม่มีขีด) เทคนิค: ใช้ split('-') เพื่อเอาก้อนตัวเลขออกมาก่อน แล้วใช้ join แบบไม่มีตัวคั่น ('') เชื่อมมันกลับเข้าไป
+'''
 
 def clean_phone():
     print('--- ข้อ 3: Clean Phone ---')
     phone_raw = input_test('Phone: ')
     
     # 1. แยกด้วยขีด
-    # parts = ...
+    parts = phone_raw.split('-')
     
     # 2. รวมด้วยค่าว่าง (ติดกันเลย)
-    # clean_number = ...
+    clean_number = ''.join(parts)
     
     print('Clean Number:', clean_number)
 
 mock_inputs = list(all_test_data['sj_3'])
 clean_phone()
-print('\n')
-ข้อที่ 4: เปลี่ยนตัวคั่น (Replace Delimiter) โจทย์: รับข้อมูลสินค้าที่คั่นด้วยคอมม่า Apple,Banana,Orange จงเปลี่ยนให้เป็นคั่นด้วยไปป์ Apple|Banana|Orange Hint: Split ด้วย , ก่อน แล้ว Join กลับด้วย |
+print('============ End Function ============\n')
 
-งูหลาม
+
+'''ข้อที่ 4: เปลี่ยนตัวคั่น (Replace Delimiter) 
+โจทย์: รับข้อมูลสินค้าที่คั่นด้วยคอมม่า Apple,Banana,Orange 
+จงเปลี่ยนให้เป็นคั่นด้วยไปป์ Apple|Banana|Orange 
+Hint: Split ด้วย , ก่อน แล้ว Join กลับด้วย |
+'''
 
 def change_delimiter():
     print('--- ข้อ 4: Change Delimiter ---')
-    data = input_test('Data: ')
+    data = input_test('Data: ').split(',')
     
     # เขียนโค้ดแปลงร่าง
     # 1. Split ...
     # 2. Join ...
-    
+
+    new_data = '|'.join(data)
+
     print('New Format:', new_data)
 
 mock_inputs = list(all_test_data['sj_4'])
 change_delimiter()
-print('\n')'''
+print('============ End Function ============\n')
