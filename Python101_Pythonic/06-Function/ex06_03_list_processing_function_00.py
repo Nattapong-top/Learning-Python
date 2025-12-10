@@ -125,5 +125,29 @@ print('num even 2', num_even_2)
 num_index_even_2 = all_even_position_even_2(num_x)
 print('num index even 2', num_index_even_2)
 
-    
+'''แบบฝึกหัด 6-3 ข้อที่ 7
+จงเขียนฟังชัน prime_factor ที่รับจำนวนเต็มบวกหนึ่งค่า 
+เพื่อนำไปแยกตัวประกอบเป็นจำนวนเฉพาะต่าง ๆ 
+เก็บผลลัพธ์ในลิสต์ซึ่งเรียงค่าจากน้อยไปมาก และคืนลิสต์นี้เป็นผลลัพธ์ของฟังก์ชัน 
+เช่น คำสั่ง prime_factor(8568) จะได้ [2, 2, 2, 3, 3, 7, 17] 
+เพราะ 2x2x2x3x3x7x17 = 8568'''
 
+def prime_factor(n:int):
+    factors = []
+    d = 2
+
+    while n > 1:
+        if n % d == 0:
+            # เจอตัวประกอบแล้ว เก็บ d ใส่ factors
+            factors.append(d)
+
+            # 2. ลดค่า n ลง // d
+            n = n // d
+        else:
+            # 3. ถ้าหารไม่ลงตัว เปลี่ยนไปใช้แม่สูตรถัดไป
+            d += 1
+    
+    return factors
+print(prime_factor(8568))
+
+        
