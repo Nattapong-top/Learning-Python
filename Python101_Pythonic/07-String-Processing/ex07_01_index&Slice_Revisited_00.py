@@ -32,9 +32,11 @@ print(char, '\n', strip_all(char, "-"))
 zero_pad(123, 5) จะได้ "00123" ในขณะที่ zero_pad(123, 2) จะได้ "123"'''
 def zero_pad(n:int, d:int):
     # โค๊ด ป๋าเขียนเอง
-    if len(str(n)) < d: 
-        return '0' * abs(len(str(n))-d) + str(n)
-    return str(n)
+    n = str(n)
+    len_n = len(n)
+    if len_n < d: 
+        return '0' * (d - len_n) + n
+    return n
 
     '''โค๊ดอาจารย์
     return ("0"*d + str(n))[-max(d,len(str(n))):]'''
@@ -50,13 +52,13 @@ print(zero_pad(0, 3))
 (1234567) จะได้ "1,234,567"'''
 
 def thousands_separator(n:int):
-    x = str(n)[::-1]
-    s = ''
-    for i in range(0, len(x), 3):
-        s += x[i:i+3] + ','
-    return s[:-1][::-1]
+    # x = str(n)[::-1]
+    # s = ''
+    # for i in range(0, len(x), 3):
+    #     s += x[i:i+3] + ','
+    # return s[:-1][::-1]
 
     # โค๊ดจาก ai
-    # return f'{n:,}'
+    return f'{n:,}'
 
 print(thousands_separator(1234567))
