@@ -99,3 +99,52 @@ def fix_name():
 mock_inputs = list(all_test_data['str_5'])
 fix_name()
 print('\n')
+
+
+
+'''ชุดข้อมูลทดสอบ'''
+product = "Latte"
+price = 50
+vat = 3.5
+total = 53.5
+
+'''ข้อที่ 1: จัดทศนิยม (Decimal)
+โจทย์: จงแสดงค่า VAT ให้เหลือทศนิยม 2 ตำแหน่ง
+Hint: f"VAT: {vat:...}"'''
+def format_vat():
+    # เขียนโค้ดตรงนี้
+    print(f'{vat:.2f}')
+    
+# เรียกใช้
+print('--- ข้อ 1 ---')
+format_vat() # ต้องได้ 3.50
+
+
+'''ข้อที่ 2: ใส่ลูกน้ำ (Comma)
+โจทย์: สมมติยอดขายเยอะมาก จงแสดงเลข 1234567.89 ให้มีลูกน้ำคั่น
+Hint: f"ยอดขาย: {sales:...}"'''
+def format_sales():
+    sales = 1234567.89
+    # เขียนโค้ดตรงนี้
+    print(f'{sales:,.2f}')
+
+print('\n--- ข้อ 2 ---')
+format_sales() # ต้องได้ 1,234,567.89
+
+
+'''ข้อที่ 3: จัดหน้าใบเสร็จ (Alignment) - ข้อสอบจริง!
+โจทย์: จงจัดหน้าให้ ชื่อสินค้าชิดซ้าย และ ราคาชิดขวา (ในความกว้าง 20 ตัวอักษร)
+Latte                50
+Hint: f"{ชื่อ:<20} {ราคา}"'''
+def print_receipt():
+    item = "Cappuccino"
+    cost = 55
+    # เขียนโค้ดตรงนี้
+    print(f'{item:<10}{cost:>11}')
+    print(item.ljust(10), str(cost).rjust(10))
+    print(f'{item:<10}{cost:>11}')
+
+print('\n--- ข้อ 3 ---')
+print_receipt() 
+# ผลลัพธ์ที่อยากได้ (กะด้วยสายตา):
+# Cappuccino            55
