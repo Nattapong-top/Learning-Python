@@ -1,0 +1,5 @@
+INFO: System started
+WARNING: High memory usage
+ERROR: Database connection failed
+INFO: User logged in
+ERROR: Timeout waiting for response

@@ -1,0 +1,4 @@
+Coffee,50
+Tea,30
+Cake,120
+Water,10
