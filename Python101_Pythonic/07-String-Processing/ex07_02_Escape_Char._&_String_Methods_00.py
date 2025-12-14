@@ -167,7 +167,7 @@ def contains2(s:str, w:str):
     new_s = ''
     for c in s:
         if c in delimiters:
-            new_s += c.replace(c,' ')
+            new_s += ' '
         else:
             new_s += c
     list_s = new_s.split()
