@@ -40,3 +40,61 @@ print(result)
 '''ข้อที่ 3: เกรดเฉลี่ยรายบุคคล (Nested Dict) มีข้อมูลคะแนนสอบของนักเรียนเก็บใน students จงเขียนโค้ดเพื่อหา "คะแนนเฉลี่ย" 
 ของนาย "Somchai" เท่านั้น'''
 
+students = {
+    "Somsak": {"Math": 80, "Eng": 70, "Sci": 75},
+    "Somchai": {"Math": 60, "Eng": 80, "Sci": 90},
+    "Somying": {"Math": 90, "Eng": 95, "Sci": 80}
+}
+
+target = "Somchai"
+scores = students[target] # ได้ดิกย่อยออกมาคือ {'Math': 60, 'Eng': 80, 'Sci': 90}
+
+total_score = 0
+count = 0
+
+# วนลูปอ่านคะแนนในดิกย่อย
+for subject in scores:
+    # เอาคะแนนบวกใส่ total_score
+    total_score = total_score + scores[subject] 
+    # ??? (ใบ้: scores[subject])
+    
+    count += 1 # นับวิชา
+
+average = total_score / count
+print(f"คะแนนเฉลี่ยของ {target} คือ {average}")
+
+'''ข้อที่ 4: ใครได้คะแนนเยอะสุด? (Max Value Logic) มีดิก scores 
+เก็บคะแนนพนักงาน จงเขียนโค้ดเพื่อหาว่า "ใคร" (ชื่อคน) 
+คือคนที่ได้คะแนนเยอะที่สุด'''
+
+scores = {"Emp1": 85, "Emp2": 92, "Emp3": 78, "Emp4": 88}
+
+winner_name = ''
+max_score = 0
+
+for name, score in scores.items():
+    if score > max_score:
+        winner_name = name
+        max_score = score
+
+print(f'ผู้ชนะคือ {winner_name} ด้วยคะแนน {max_score} คะแนน')
+
+'''ข้อที่ 5: แยกประเภทเลขคู่-คี่ (Grouping) มีลิสต์ตัวเลข numbers 
+จงแยกตัวเลขใส่ลงในดิก grouped โดยแยกเป็นคีย์ "even" (เลขคู่) และ "odd" 
+(เลขคี่)'''
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+grouped = {
+    'even': [],
+    'odd': []
+}
+
+for i in numbers:
+    if i % 2 == 0:
+        grouped['even'].append(i)
+    else:
+        grouped['odd'].append(i)
+
+print(grouped['even'])
+print(grouped['odd'])
