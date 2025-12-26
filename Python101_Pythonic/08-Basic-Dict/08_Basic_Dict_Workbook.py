@@ -147,4 +147,27 @@ def phone_book():
         print(phonebook[check])
     else:
         print('Not Found')
-phone_book()
+# phone_book()
+
+
+'''8-4: Checking Key Existence'''
+
+'''โจทย์: "เครื่องคิดเงินหน้าร้าน" 
+จงเขียนฟังก์ชัน check_price(product_name) 
+โดยใช้ข้อมูลราคาสินค้าจาก Dict ที่กำหนดให้
+ถ้ามีสินค้า: ให้คืนค่าราคาสินค้านั้น
+ถ้าไม่มีสินค้า: ให้คืนข้อความว่า "สินค้าหมด"'''
+
+prices = {
+    'mama': 6,
+    'water': 10,
+    'lay': 20
+}
+
+def check_price(product_name):
+    return prices.get(product_name, 'สินค้าหมด')
+# เทสเคส
+print(check_price('mama'))   # ต้องได้ 6
+print(check_price('pepsi'))  # ต้องได้ "สินค้าหมด"
+
+
