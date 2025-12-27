@@ -171,3 +171,43 @@ print(check_price('mama'))   # ต้องได้ 6
 print(check_price('pepsi'))  # ต้องได้ "สินค้าหมด"
 
 
+'''📘 โจทย์: Phonebook (Dict & Counting Style)
+คำอธิบาย
+ให้เขียนโปรแกรมจัดการข้อมูลสมุดโทรศัพท์
+โดย ชื่ออาจซ้ำได้ แต่หมายเลขโทรศัพท์ไม่ซ้ำ'''
+'''เวอร์ชัน Pythonic'''
+
+def phonebook():
+
+    number_to_name = {}
+    name_to_numbers = {}
+
+    while True:
+        line = input('ชื่อ เบอร์: ').strip()
+        if not line:
+            continue
+
+        if line.upper() == 'END':
+            break
+        
+        name, number = line.split()
+
+        number_to_name[number] = name
+        
+        # แบบ pythonic
+        name_to_numbers.setdefault(name, []).append(number)
+
+        # แบบธรรมดา
+        # if name not in name_to_numbers:
+        #     name_to_numbers[name] = []
+        # name_to_numbers[name].append(number)
+    
+    for name, numbers in name_to_numbers.items():
+        print(name, len(numbers))
+    
+    for numbers, name in number_to_name.items():
+        print(numbers, name)
+
+phonebook()
+
+
