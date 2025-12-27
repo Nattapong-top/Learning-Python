@@ -208,6 +208,92 @@ def phonebook():
     for numbers, name in number_to_name.items():
         print(numbers, name)
 
-phonebook()
+# phonebook()
 
 
+
+'''บทที่ 08-03 : การนับตัวอักษร'''
+'''การบ้านสั้น ๆ (สไตล์หนังสือ)
+ลองเขียนโปรแกรมที่:
+รับ 1 บรรทัด
+นับเฉพาะตัวอักษร a–z
+ไม่นับช่องว่าง'''
+# โค๊ดแบบธรรมดา
+def abc_count(abc:str):
+    
+    count = {}
+    word = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    for char in abc.upper():
+        if char in word:
+            if char in count:
+                count[char] += 1
+            else:
+                count[char] = 1
+    return count
+print(abc_count('sdfgkoi3-4058-34rfsd[fodfg453]'))
+
+
+# โค๊ดแบบ pythonic
+def abc_count_pythonic(text:str) -> dict:
+    count = {}
+    # แปลงให้เป็น set ใช้เวลาค้นหาเร็วกว่า
+    letter = set('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+
+    for char in text.upper():
+        if char in letter:
+            count[char] = count.get(char, 0) + 1
+    
+    return count
+print(abc_count_pythonic('sdfgkoi3-4058-34rfsd[fodfg453]'))
+
+
+
+'''08-04 : ยอดขายไอศกรีม
+(dict + การ “รวมยอด”)'''
+'''Vanilla 20
+Chocolate 15
+Vanilla 30
+Strawberry 10
+Chocolate 5'''
+
+def icecrem_sales():
+
+    sales = {}
+
+    while True:
+
+        line = input('ชื่อ ราคา: ').strip()
+        if not line:
+            continue
+
+        if line.upper() == 'END':
+            break
+
+        flavor, price = line.split()
+
+        sales[flavor] = sales.get(flavor, 0) + int(price)
+
+    return sales
+
+# # sales = icecrem_sales()
+# for flavor, total in sales.items():
+#     print(flavor, total)
+
+
+'''08-05 : สมุดหน้าเหลือง'''
+
+def yellow_pages():
+    pages = {}
+    while True:
+        line = input('ร้าน หมวด: ').strip()
+        if not line:
+            continue
+        if line.lower() == 'end':
+            break
+        shop, category = line.split()
+        pages.setdefault(category, []).append(shop)
+    return pages
+
+book_y1 = yellow_pages()
+for cat, shop in book_y1.items():
+    print(cat, *shop)
