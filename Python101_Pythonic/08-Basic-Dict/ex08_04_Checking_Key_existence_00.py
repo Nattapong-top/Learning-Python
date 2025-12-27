@@ -1,3 +1,39 @@
+import sys
+import os
+
+# 1. หาตำแหน่งปัจจุบันของไฟล์โจทย์
+current_file_path = os.path.abspath(__file__)
+current_dir = os.path.dirname(current_file_path)
+
+# 2. คำนวณหาโฟลเดอร์ Fake_Input (ถอย 1 ก้าว แล้วเข้า Fake_Input)
+target_dir = os.path.abspath(os.path.join(current_dir, '..', 'Fake_Input'))
+target_file = os.path.join(target_dir, 'my_test_input.py')
+
+# 3. ถ้าเจอไฟล์ ก็ลุยต่อ
+if os.path.exists(target_dir):
+    sys.path.append(target_dir)
+    try:
+        from my_test_input import input, set_input
+        print("✅ Import สำเร็จ! พร้อมใช้งาน")
+    except ImportError as e:
+        print(f"❌ Import ไม่ได้เพราะ: {e}")
+else:
+    print("❌ หาโฟลเดอร์ไม่เจอ เลย Import ไม่ได้")
+
+# ... (หยุดการทำงานชั่วคราวเพื่อดูผลลัพธ์) ...
+# exit()
+
+set_input("""
+TV Mobile Camera
+10000 20000 15000
+TV
+Camera
+Fridge
+end
+""")
+
+
+
 '''แบบฝึกหัด 8-4 ข้อที่ 1
 p1 และ p2 เป็นดิกเก็บคะแนนของนักเรียนที่เรียนวิชา 1 และ 2 
 ตามลำดับในรูปแบบ {เลขประจำตัว: คะแนน} จงเขียนฟังก์ชัน take_both(st_id, p1, p2) 
