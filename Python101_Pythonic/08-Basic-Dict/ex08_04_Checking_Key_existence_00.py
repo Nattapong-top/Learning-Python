@@ -63,3 +63,53 @@ def count_chars(text:str):
 
 
 
+'''แบบฝึกหัด 8-4 ข้อที่ 5
+income1 และ income2 เป็นดิกในรูปแบบ {รหัสสาขาร้าน: รายได้} 
+ซึ่งเก็บรายรับของร้านอาหารสาขาต่าง ๆ จงเขียนฟังก์ชัน merge(income1, income2) 
+ที่คืนดิกใหม่ในรูปแบบเดียวกัน แต่เก็บข้อมูลรวมจากทั้งสองดิกที่รับมา เช่น 
+income1 = {"P100":100, "P200":200} และ income2 = {"P200":300, "P300":90} 
+merge กันแล้วจะได้ดิกใหม่ {"P100":100, "P200":500, "P300":90}'''
+
+def merge(income1:dict, income2:dict):
+    merge_income = income1.copy()
+
+    for item in income2:
+        if item in income2:
+            merge_income[item] += income2[item]
+        else:
+            merge_income[item] = income2[item]
+    
+    return merge_income
+
+'''แบบฝึกหัด 8-4 ข้อที่ 6
+จงเขียนโปรแกรมอ่านบรรทัดแรกของอินพุตเป็นรายการของรหัสสินค้า 
+บรรทัดที่สองเป็นรายการของราคา (มีจำนวนข้อมูลเท่ากับของบรรทัดแรก 
+โดยสินค้าชิ้นที่ตำแหน่ง i ก็มีราคาที่ตำแหน่ง i) และอ่านบรรทัดถัด ๆ มา (จบด้วย end) 
+ที่เป็นรหัสสินค้าที่ต้องการให้แสดงราคา ถ้าหาไม่พบให้แสดง Not found 
+จากตัวอย่างจะแสดง 35.0, Not found และ 50.0 บรรทัดละราคา (หรือข้อความ)'''
+
+def input_end():
+    # 1. รับรหัสสินค้า และ ราคา (แค่ 2 บรรทัดแรก) 
+    pids = input('รหัสสินค้า: ').strip().split()
+    prices = input('ราคา: ').strip().split()
+
+    # 2. สร้าง Dict (ใช้ท่าไม้ตาย zip ของป๋า)
+    # zip(pids, prices) จะจับคู่ รหัส-ราคา ให้เอง แล้วแปลงเป็น dict เลย
+    products = dict(zip(pids, prices))
+
+    # 3. เริ่มช่วงถาม-ตอบ (Query Loop)
+    while True:
+        check = input('เช็คราคาด้วยรหัสสินค้า: ').strip()
+        if check == 'end':
+            break
+    
+        if check in products:
+            print(products[check])
+        else:
+            print('Not Found')
+
+input_end()
+
+        
+
+
