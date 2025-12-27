@@ -294,6 +294,33 @@ def yellow_pages():
         pages.setdefault(category, []).append(shop)
     return pages
 
-book_y1 = yellow_pages()
-for cat, shop in book_y1.items():
-    print(cat, *shop)
+# book_y1 = yellow_pages()
+# for cat, shop in book_y1.items():
+#     print(cat, *shop)
+
+
+'''📘 08-06 : การป้อนข้อความในโทรศัพท์โบราณ'''
+
+def old_phone(text:str):
+    keypad = {
+    'A': '2',   'B': '22',   'C': '222',
+    'D': '3',   'E': '33',   'F': '333',
+    'G': '4',   'H': '44',   'I': '444',
+    'J': '5',   'K': '55',   'L': '555',
+    'M': '6',   'N': '66',   'O': '666',
+    'P': '7',   'Q': '77',   'R': '777',  'S': '7777',
+    'T': '8',   'U': '88',   'V': '888',
+    'W': '9',   'X': '99',   'Y': '999',  'Z': '9999'
+    }
+
+    # text = input('SMS: ').strip().upper()
+    result = []
+
+    for ch in text.upper():
+        result.append(keypad[ch])
+    
+    return result
+sms = old_phone('nattapong')
+print(' '.join(sms))
+
+
