@@ -324,3 +324,16 @@ sms = old_phone('nattapong')
 print(' '.join(sms))
 
 
+'''📘 08-07 : เงินสด '''
+def total_cash(cash:dict):
+    total = 0
+    for k, v in cash.items():
+        total += k * v
+    
+    return total
+
+
+if __name__ == "__main__":
+    cash = {1000: 2, 500: 1, 100: 5}
+    print(total_cash(cash))
+    # ควรได้: 2600
