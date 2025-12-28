@@ -271,3 +271,41 @@ def pattern_09_06(n:int):
 # Test Area
 # =========================
 pattern_09_06(4)
+
+
+'''
+🧾 โจทย์: จงเขียนฟังก์ชันหา longest common prefix
+ของ list ของ string
+
+ถ้าไม่มี prefix ร่วม ให้คืน ""
+'''
+
+def longest_common_prefix(words):
+    if not words:
+        return ''
+    
+    base = words[0]
+    prefix = ''
+
+    for i in range(len(base)):
+
+        ch = base[i]
+
+        for j in range(1, len(words)):
+            if i >= len(words[j]) or words[j][i] != ch:
+                return prefix
+        
+        prefix += ch
+
+# =========================
+# Test Area
+# =========================
+words = [
+    "programming",
+    "program",
+    "programmatic",
+    "programmer",
+    "progressive"
+]
+
+print(longest_common_prefix(words))
