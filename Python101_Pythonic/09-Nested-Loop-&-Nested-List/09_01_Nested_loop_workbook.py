@@ -309,3 +309,24 @@ words = [
 ]
 
 print(longest_common_prefix(words))
+
+'''
+โจทย์คือ:ตรวจว่ามีข้อมูลซ้ำใน list ไหม'''
+'''🐍 Pythonic'''
+
+def has_duplicate(x):
+    return len(x) != len(set(x))
+
+x = [23, 44, 55, 66, 22, 44]
+print(has_duplicate(x))
+
+# แบบธรรมดา
+def has_duplicate_basic(x:list):
+    seen = set()
+    for v in x:
+        if v in seen:
+            return True
+        seen.add(v)
+    return False
+
+print(has_duplicate_basic(x))
