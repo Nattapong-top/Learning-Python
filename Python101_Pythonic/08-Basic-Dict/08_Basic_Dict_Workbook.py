@@ -336,4 +336,4 @@ def total_cash(cash:dict):
 if __name__ == "__main__":
     cash = {1000: 2, 500: 1, 100: 5}
     print(total_cash(cash))
-    # ควรได้: 2600
+    # ควรได้: 3000
