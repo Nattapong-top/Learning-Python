@@ -57,8 +57,39 @@ Expected Output:
 2 4
 2 4 6
 2 4 6 8
+'''
+print()
+def EvenNumberTableWhile(n:int):
+    i = 1
+    while i <= n:
+        j = 2
+        k = 1
+        while k <= (i):
+            total = j*k
+            print(total, end=' ')
+            k += 1
+        print()
+        i += 1
+EvenNumberTableWhile(6)
+print('-'*50)
+def EvenNumberTableWhile(n:int):
+    i = 1
+    while i <= n:
+        j = 2
+        k = 1
+        while k <= i:
+            total = j+k
+            if total % 2 == 0:
+                print(total, end=' ')
+            k += 1
+        print()
+        i += 1
+EvenNumberTableWhile(4)
 
 
+
+
+'''
 ==================================================
 Problem 3: LimitedStarRowWhile
 โจทย์: แถวดาวแบบจำกัดจำนวน
