@@ -62,32 +62,15 @@ print()
 def EvenNumberTableWhile(n:int):
     i = 1
     while i <= n:
-        j = 2
         k = 1
         while k <= (i):
-            total = j*k
+            total = 2*k
             print(total, end=' ')
             k += 1
         print()
         i += 1
 EvenNumberTableWhile(6)
 print('-'*50)
-def EvenNumberTableWhile(n:int):
-    i = 1
-    while i <= n:
-        j = 2
-        k = 1
-        while k <= i:
-            total = j+k
-            if total % 2 == 0:
-                print(total, end=' ')
-            k += 1
-        print()
-        i += 1
-EvenNumberTableWhile(4)
-
-
-
 
 '''
 ==================================================
@@ -97,17 +80,12 @@ Problem 3: LimitedStarRowWhile
 
 คำอธิบาย:
 จงเขียนฟังก์ชันชื่อ LimitedStarRowWhile
-รับจำนวนเต็ม N
-แสดงดาวเป็นแถว ๆ โดยแถวที่ i มีดาว i ดวง
-แต่ถ้าจำนวนดาวในแถวใดมากกว่า 5
-ให้หยุดแสดงดาวในแถวนั้นทันที
-แล้วไปแสดงแถวถัดไป
-ต้องใช้ while ซ้อน while และใช้เงื่อนไขหยุดลูปด้านใน
-
+รับจำนวนเต็ม N แสดงดาวเป็นแถว ๆ โดยแถวที่ i มีดาว i ดวง
+แต่ถ้าจำนวนดาวในแถวใดมากกว่า 5 ให้หยุดแสดงดาวในแถวนั้นทันที
+แล้วไปแสดงแถวถัดไป ต้องใช้ while ซ้อน while และใช้เงื่อนไขหยุดลูปด้านใน
 Test Case:
 Input:
 7
-
 Expected Output:
 *
 **
@@ -115,9 +93,23 @@ Expected Output:
 ****
 *****
 *****
-*****
-     
+*****'''
+def LimitedStarRowWhile(nums:int):
+    line = 1
+    while line <= nums:
+        star = 1
+        while star <= line:
+            if star > 5:
+                break
+            print('*', end='')
+            star += 1
+        print()
+        line += 1
+LimitedStarRowWhile(7)
 
+
+
+'''
 ==================================================
 Problem 4: CountPositiveNumbersWhile
 โจทย์: นับจำนวนเลขบวกจากหลายบรรทัด
@@ -125,45 +117,66 @@ Problem 4: CountPositiveNumbersWhile
 
 คำอธิบาย:
 จงเขียนฟังก์ชันชื่อ CountPositiveNumbersWhile
-รับข้อมูลจากผู้ใช้ทีละบรรทัด
-แต่ละบรรทัดมีจำนวนเต็มหลายตัวคั่นด้วยช่องว่าง
-โปรแกรมหยุดเมื่อผู้ใช้พิมพ์ END
-ให้นับเฉพาะจำนวนที่เป็นเลขบวก (> 0)
-ต้องใช้ while ซ้อน while เท่านั้น
-
+รับข้อมูลจากผู้ใช้ทีละบรรทัด แต่ละบรรทัดมีจำนวนเต็มหลายตัวคั่นด้วยช่องว่าง
+โปรแกรมหยุดเมื่อผู้ใช้พิมพ์ END ให้นับเฉพาะจำนวนที่เป็นเลขบวก (> 0)
 Test Case:
 Input:
 1 -2 3
 0 4 -5
 6
 END
-
 Expected Output:
 4
+'''
+def CountPositiveNumberWhile():
+    total = 0
+    while True:
+        line = input('Nums: ')
+        if not line:
+            continue
+        elif line.upper() == 'END':
+            break
+        else:
+            parts = line.split()
+            count = 0
+            while count < len(parts):
+                num = int(parts[count])
+                if num > 0:
+                    total += 1
+                count += 1
+    return total
+# print(CountPositiveNumberWhile())
 
-
+'''
 ==================================================
 Problem 5: MultiplicationTriangleWhile
 โจทย์: สามเหลี่ยมผลคูณ
 ==================================================
-
 คำอธิบาย:
 จงเขียนฟังก์ชันชื่อ MultiplicationTriangleWhile
-รับจำนวนเต็ม N
-แล้วแสดงผลคูณเป็นรูปสามเหลี่ยม
+รับจำนวนเต็ม N แล้วแสดงผลคูณเป็นรูปสามเหลี่ยม
 โดยบรรทัดที่ i ให้แสดงผลคูณของ i กับ 1 ถึง i
 ถ้าผลคูณใดมากกว่า 30 ให้หยุดแสดงในบรรทัดนั้นทันที
-ต้องใช้ while ซ้อน while เท่านั้น
-
 Test Case:
 Input:
 5
-
 Expected Output:
 1
 2 4
 3 6 9
 4 8 12 16
-5 10 15 20 25
-==================================================
-'''
+5 10 15 20 25'''
+def MultiplicationTriangleWhile(num:int):
+    line = 1
+    while line <= num:
+        multi = 1
+        while multi <= line:
+            total = multi * line
+            if total > 30:
+                break
+            print(total, end=' ')
+            multi += 1
+        print()
+        line += 1
+MultiplicationTriangleWhile(5)
+
