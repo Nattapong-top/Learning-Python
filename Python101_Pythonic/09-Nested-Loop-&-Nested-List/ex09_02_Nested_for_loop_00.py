@@ -133,3 +133,21 @@ def print_month(m, y):
                 print(' ', end='')
         print()
 print_month(1,2026)
+
+
+def print_month_arjan(m, y):
+    print(" SU MO TU WE TH FR SA")
+    dow1 = day_of_week(1,m,y)
+    num_days = days_in_month(m,y)
+    line = '   '*dow1
+    s = dow1
+    d = 1
+    while d <= num_days:
+        for j in range(s,7):
+            line += ("   "+str(d))[-3:]
+            d += 1
+            if d > num_days: break
+        print(line)
+        line = ""
+        s = 0
+print_month_arjan(8, 2019)
