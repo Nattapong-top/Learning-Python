@@ -116,5 +116,20 @@ def day_of_week(d, m, y):
 #-----------------------------------------
 def print_month(m, y):
     print(" SU MO TU WE TH FR SA")
-
-
+    month_days = days_in_month(m,y)
+    start_day = day_of_week(1, m, y)
+    current_day = 1
+    
+    # วนทีละสัปดาห์ (ไม่รู้ล่วงหน้าว่ากี่แถว)
+    while current_day <= month_days:
+        for col in range(7):
+            if start_day > 0:
+                print(f"{''*start_day:3}", end='')
+                start_day -= 1
+            elif current_day <= month_days:
+                print(f'{current_day:3}', end='')
+                current_day += 1
+            else:
+                print(' ', end='')
+        print()
+print_month(1,2026)
