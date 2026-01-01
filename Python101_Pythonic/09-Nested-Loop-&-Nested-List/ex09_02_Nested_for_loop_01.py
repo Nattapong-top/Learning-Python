@@ -261,11 +261,14 @@ def max_number_from_input():
          if not line:
               continue
          parst = line.split()
-         for s in parst:
-              if s.lstrip('-').isdigit():
-                   num = int(s) 
-                   if max_num is None or num > max_num:
+         count = 0
+         while count < len(parst):
+              num_str = parst[count]
+              if num_str.lstrip('-').isdigit():
+                   num = int(num_str)
+                   if max_num is None or max_num < num:
                         max_num = num
+              count += 1
      return max_num
 print(max_number_from_input())
 
@@ -294,9 +297,12 @@ print(max_number_from_input())
    ***
    ****
 '''
-#def 
-
-
+def print_right_triangle(n:int):
+     for i in range(1,n+1):
+          for j in range(i):
+               print('*', end='')
+          print()
+# print_right_triangle(6)
 
 '''
 --------------------------------
@@ -321,7 +327,34 @@ print(max_number_from_input())
    Output:
    Even: 2
    Odd: 3
+'''
+def count_even_odd():
+     even = 0
+     odd = 0
+     
+     while True:
+          lines = input('9. input nums (END): ')
+          if lines.upper() == 'END':
+               break
+          elif not lines:
+               continue
+          parts = lines.split()
 
+          for m in parts:
+               if m.lstrip('-').isdigit():
+                    num = int(m)
+                    if num % 2 == 0:
+                         even += 1
+                    else:
+                         odd += 1
+     return even, odd
+# even, odd = count_even_odd()
+# print(f'even:{even}, odd:{odd}')
+                         
+
+
+
+'''
 
 --------------------------------
 
@@ -344,7 +377,18 @@ print(max_number_from_input())
     1 2 3
     4 5 6
     7 8 9
+'''
+def print_number_grid(n:int):
+     count = 1
+     for row in range(1,n+1):
+          for col in range(1,n+1):
+               print(count, end=' ')
+               count += 1
+          print()
+# print_number_grid(9)
 
+
+'''
 ==============================
 END OF PRACTICE SET
 ==============================
