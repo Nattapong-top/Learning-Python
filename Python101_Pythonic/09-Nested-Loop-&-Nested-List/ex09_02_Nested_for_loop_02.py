@@ -176,8 +176,6 @@ def count_all_pairs(n:int):
     return count
 print(count_all_pairs(4))
 
-
-
 # =====================
 # [UP LEVEL]
 # =====================
@@ -209,7 +207,14 @@ print(count_all_pairs(4))
    ****
 '''
 # --------------------------------
-
+def print_right_aligned_star_triangle(n:int):
+    for i in range(1, n+1):
+        for j in range(i, i+1):
+            print(' '*(n-j), end='')
+            for k in range(i, i+1):
+                print('*'*k, end='')
+        print()
+print_right_aligned_star_triangle(4)
 
 '''
 7) Problem Name (EN): PrintStarPyramid
