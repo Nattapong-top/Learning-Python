@@ -1,0 +1,9 @@
+Input: list
+Output: max duplicate count
+
+Steps:
+1. If list empty → return 0
+2. Pick first value
+3. Count same values
+4. Save max
+5. Repeat until end
