@@ -65,8 +65,7 @@ def compare_suffix(base:str, check_word:str) -> str:
             break
     return result
 
-def main_longest_suffix():
-    words = ["programming", "scramming", "Diagramming"]
+def main_longest_suffix(words:list):
     re_words = reversed_words(words)
     base = re_words[0]
 
@@ -79,7 +78,8 @@ def main_longest_suffix():
     
     return base[::-1]
 
-print(main_longest_suffix())
+words = ["programming", "scramming", "Diagramming"]
+print(main_longest_suffix(words))
 
 
 
@@ -87,4 +87,45 @@ print(main_longest_suffix())
 ฟังก์ชัน reverse_and_add(n) คืนผลบวกของ n กับเลขที่เขียนกลับลำดับของ n เช่น 96+69 ได้ 165 ถ้าเราเริ่มที่จำนวนเต็มค่าหนึ่ง แล้วทำ reverse_and_add ไปเรื่อย ๆ มักจะจบทีจำนวนเต็มที่เป็นพาลินโดรม เช่น 96 -> 96+69 = 165 -> 165+561 = 726 -> 726+627 = 1353 -> 1353+3531 = 4884 เป็นพาลินโดรม แต่ก็มีจำนวนเต็มบางจำนวนที่ทำแบบนี้แล้วไม่เป็น เช่น 196 เราเรียกจำนวนแบบนี้ว่า Lychrel number
 
 จงเขียนโปรแกรมรับจำนวนเต็ม N แล้วแสดง Lychrel number ที่มีค่าน้อยที่สุดที่มากกว่า N กำหนดให้ การสรุปว่าเป็น Lychrel number คือเมื่อทำ reverse_and_add ไปแล้ว 30 รอบ ก็ยังไม่ใช่พาลินโดรม (ต้องขอบอกว่า ข้อกำหนดนี้ไม่เป็นความจริงนะ เพียงต้องการให้เขียนโปรแกรมง่ายเท่านั้น)'''
+
+def reverse_and_add(n):
+    return n + int(str(n)[::-1])
+#--------------------------------
+def is_palindrome(n):
+    m = str(n)
+    return m == m[::-1]
+#--------------------------------
+def lychrel_number():
+
+    N = int(input())
+    x = N+1
+
+    while True:
+        found = False
+        current = x
+        for i in range(30):
+            current = reverse_and_add(current)
+            if is_palindrome(current):
+                found = True    
+                break
+        
+        if not found:
+            print(x)
+            return
+        else:
+            x += 1
+# lychrel_number()
+
+# โค๊ดอาจารย์ สมกับเป็นอาจารย์ ลูกศิษขอคารวะ _/|\_
+def lychrel_numbers():
+    N = int(input())
+    while True:
+        N = N+1
+        n = N
+        for i in range(30):
+            n = reverse_and_add(n)
+            if is_palindrome(n): break
+        if not is_palindrome(n): break
+    print(N)
+lychrel_numbers()
 
