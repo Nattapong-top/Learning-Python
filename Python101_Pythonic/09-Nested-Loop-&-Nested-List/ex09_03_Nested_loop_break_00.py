@@ -30,7 +30,9 @@ longest_suffix(["programming", "scramming", "Diagramming"]) ได้ "ramming"'
 
 # version ด้นสด 
 def longest_suffix(words:list):
-    print(words)
+    if not words:
+        return ''
+    
     base = words[0][::-1]
 
     for i in range(1,len(words)):
@@ -43,12 +45,46 @@ def longest_suffix(words:list):
             else:
                 break
         base = suffix
-    return suffix[::-1]
+    return base[::-1]
 words = ["programming", "scramming", "Diagramming"]
 print(longest_suffix(words))
+
+# ทดสอบทำ version แยก funciton ออกเป็นส่วนๆ
+def reversed_words(words:list):
+    return [ch[::-1] for ch in words]
+
+def compare_suffix(base:str, check_word:str) -> str:
+    len_min = min(len(base), len(check_word))
+    result = ''
+    for i in range(len_min):
+        part1 = base[i]
+        part2 = check_word[i]
+        if part1 == part2:
+            result += part1
+        else:
+            break
+    return result
+
+def main_longest_suffix():
+    words = ["programming", "scramming", "Diagramming"]
+    re_words = reversed_words(words)
+    base = re_words[0]
+
+    for i in range(1, len(re_words)):
+        check_word = re_words[i]
+
+        compare = compare_suffix(base, check_word)
+    
+        base = compare
+    
+    return base[::-1]
+
+print(main_longest_suffix())
+
 
 
 '''แบบฝึกหัด 9-3 ข้อที่ 3
 ฟังก์ชัน reverse_and_add(n) คืนผลบวกของ n กับเลขที่เขียนกลับลำดับของ n เช่น 96+69 ได้ 165 ถ้าเราเริ่มที่จำนวนเต็มค่าหนึ่ง แล้วทำ reverse_and_add ไปเรื่อย ๆ มักจะจบทีจำนวนเต็มที่เป็นพาลินโดรม เช่น 96 -> 96+69 = 165 -> 165+561 = 726 -> 726+627 = 1353 -> 1353+3531 = 4884 เป็นพาลินโดรม แต่ก็มีจำนวนเต็มบางจำนวนที่ทำแบบนี้แล้วไม่เป็น เช่น 196 เราเรียกจำนวนแบบนี้ว่า Lychrel number
 
 จงเขียนโปรแกรมรับจำนวนเต็ม N แล้วแสดง Lychrel number ที่มีค่าน้อยที่สุดที่มากกว่า N กำหนดให้ การสรุปว่าเป็น Lychrel number คือเมื่อทำ reverse_and_add ไปแล้ว 30 รอบ ก็ยังไม่ใช่พาลินโดรม (ต้องขอบอกว่า ข้อกำหนดนี้ไม่เป็นความจริงนะ เพียงต้องการให้เขียนโปรแกรมง่ายเท่านั้น)'''
+
