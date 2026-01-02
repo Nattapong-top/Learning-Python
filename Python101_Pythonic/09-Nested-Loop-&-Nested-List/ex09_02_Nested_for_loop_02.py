@@ -210,9 +210,7 @@ print(count_all_pairs(4))
 def print_right_aligned_star_triangle(n:int):
     for i in range(1, n+1):
         for j in range(i, i+1):
-            print(' '*(n-j), end='')
-            for k in range(i, i+1):
-                print('*'*k, end='')
+            print(' '*(n-j)+'*'*j, end='')
         print()
 print_right_aligned_star_triangle(4)
 
@@ -242,7 +240,11 @@ print_right_aligned_star_triangle(4)
    *****
 '''
 # --------------------------------
-
+def print_star_pyramid(n:int):
+    for i in range(1, n+1):
+        for j in range(i, i+1):
+            print(' '*(n-i)+'*'*(2*j-1)+' '*(n-i))
+print_star_pyramid(3)
 
 '''
 8) Problem Name (EN): PrintMultiplicationTriangle
@@ -270,7 +272,12 @@ print_right_aligned_star_triangle(4)
    4 8 12 16
 '''
 # --------------------------------
-
+def print_multiplication_triangle(n:int):
+    for i in range(1, n+1):
+        for j in range(1, i+1):
+            print(i*j, end=' ')
+        print()
+print_multiplication_triangle(4)
 
 '''
 9) Problem Name (EN): PrintHollowSquare
@@ -299,8 +306,18 @@ print_right_aligned_star_triangle(4)
    *****
 '''
 # --------------------------------
-
-
+def print_hollow_square(n:int):
+    for i in range(1, n+1):
+        for j in range(1,n+1):
+            if i == 1 or i == n:
+                print('*', end='')
+            elif i < n:
+                if j == 1 or j == n:
+                    print('*', end='')
+                else:
+                    print(' ', end='')
+        print()
+print_hollow_square(5)
 '''
 10) Problem Name (EN): FindClosestPair1toN
     ชื่อโจทย์ (TH): หาคู่ตัวเลขที่ต่างกันน้อยที่สุด
@@ -325,3 +342,12 @@ print_right_aligned_star_triangle(4)
     Output: 1
 '''
 # --------------------------------
+def find_closest_pair_1_to_n(n:int):
+    find = None
+    for i in range(1, n+1):
+        for j in range(i+1, n+1):
+            total = j-i
+            if find is None or total < find:
+                find = total
+    return find
+print(find_closest_pair_1_to_n(5))
