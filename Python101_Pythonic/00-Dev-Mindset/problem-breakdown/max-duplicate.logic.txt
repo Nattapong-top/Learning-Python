@@ -7,3 +7,47 @@ Steps:
 3. Count same values
 4. Save max
 5. Repeat until end
+
+อินพุต: รายการ
+เอาต์พุต: จำนวนค่าซ้ำสูงสุด
+
+ขั้นตอน:
+1. ถ้าลิสต์ว่าง → ส่งคืนค่า 0
+2. เลือกค่าแรก
+3. นับจำนวนค่าที่ซ้ำกัน
+4. บันทึกค่าสูงสุด
+5. ทำซ้ำจนกว่าจะสิ้นสุด
+
+1️⃣ Problem Solving Mindset (หัวใจที่สุด)
+
+ทุกโจทย์ต้องตอบ 5 คำถามนี้ให้ได้ก่อนเขียนโค้ด 
+Input: รับอะไรเข้ามา
+- list 
+
+Output: ต้องคืนอะไร
+- int 
+Logic: คิดยังไงให้ได้คำตอบ
+- สร้าง list ไว้เก็บตัวเลขที่เจอ num_list
+- สร้าง list ไว้เก็บจำนวนนับ counter_list
+- counter นับจำนวนซ้ำ
+- สร้างวงวนรอบนอก i
+- เช็คว่า i ถ้าไม่มีใน num_list ให้ทำ ถ้ามีข้าม
+- วงวนรอบใน j เช็คว่า i == j ไหม ใช้ count += 1
+- จบวงวน j เพิ่ม count เข้าใน counter_list และ เพิ่ม i เข้าไปใน num_list
+- จบวงวน i จบ
+
+ตอนนี้มีข้อมูลคือ
+ตัวเลขที่เจอ ใน num_list 
+จำนวนตัวเลขซ้ำที่นับได้ ใน counter_list
+สร้าง วงวนอีกรอบ i ด้วย index
+ตั้ง max_value = counter_list[0] เป็นค่ามากสุด
+ตั้ง max_index = 0
+if counter_list[i] > max_value
+อัพเดท max_value
+max_index = i
+ค่ามากซ้ำกันมาสุด max_value, num_list[max_index]
+
+
+Condition / Loop: ตัดสินใจหรือวนตรงไหน
+
+Edge Case: เคสแปลก ๆ มีไหม
