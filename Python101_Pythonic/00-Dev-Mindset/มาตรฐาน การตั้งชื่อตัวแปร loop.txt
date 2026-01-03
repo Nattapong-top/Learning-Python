@@ -80,6 +80,8 @@ value
 
 running (flag)
 
+parts               แบ่งข้อมูล
+
 📌 while = loop เชิงสถานะ
 
 6️⃣ Counter / Accumulator ใน Loop
