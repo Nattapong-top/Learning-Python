@@ -12,11 +12,11 @@ Output: ต้องคืนอะไร
 - อาจจะมีเลขคู่ที่น้อยสุดด้วย
 
 Logic: คิดยังไงให้ได้คำตอบ
+- ตั้งตัวแปร distance 0
+- ตั้งตัวแปร min_distance none
 - เช็ค list ก่อนว่างไหม ว่าง return 0
 - เช็คว่า มีค่าใน len(list_a) == len(list_b) เท่ากันไหม
 - list น้อยกว่า 2 ทำไม่ได้ return 0
-- ตั้งตัวแปร distance 0
-- ตั้งตัวแปร min_distance none
 - วงวนรอบนอก i index ตามจำนวน list 
 - วงวนรอบใน j index ตาจำนวน list
 - วน i < j
