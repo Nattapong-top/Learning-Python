@@ -1,6 +1,7 @@
 # --- โปรแกรม POS ร้านชานม V0.1 ---
 
 import os
+from datetime import datetime
 
 
 # 1. ข้อมูล (Data)
@@ -13,13 +14,22 @@ menu = {
 total_quantity = 0
 grand_total = 0
 
+def get_datetime():
+    # ดึงเวลาปัจจุบัน
+    now = datetime.now()
+    # จัดรูปแบบให้อ่านง่ายๆ (วัน/เดือน/ปี ชั่วโมง:นาที:วินาที)
+    timestamp = now.strftime('%d/%m/%y %H:%M:%S')
+
+    return timestamp
+
+
 def get_quantity()->int:
     while True:
         quantity_str = input("รับกี่แก้วครับ: ")
-        if quantity_str.isdigit():
-            break
-        print('ใส่ตัวเลขเท่านั้นครับ')
-    return int(quantity_str)
+        if quantity_str.isdigit() and int(quantity_str) > 0:
+            return int(quantity_str)
+        print('.ใส่ตัวเลขจำนวนเต็ม และต้องมากกว่า 0 ครับ')
+
 
 def get_price_order(order:str,quantity:int) -> int:
     # 3. คำนวณ (Process)
@@ -30,19 +40,21 @@ def get_price_order(order:str,quantity:int) -> int:
 def show_summary(order, quantity, total):
     # 4. แสดงผล (Output)
     print("-" * 20) # ขีดเส้นกั้นสวยๆ
+    print(f'--- {get_datetime()} ---')
     print(f"คุณสั่ง {order} จำนวน {quantity} แก้ว")
     print(f"ราคารวมทั้งหมด {total} บาท")
     print("-" * 20)
 
 def save_sales_log(order, quantity, total):
     try:
+        timestamp = get_datetime()
         # --- ส่วน GPS หาที่อยู่ไฟล์ ---
         script_path = os.path.abspath(__file__) 
         current_folder = os.path.dirname(script_path)
         file_path = os.path.join(current_folder, 'sales_log.txt')
         # ---------------------------
         with open(file_path, 'a', encoding='utf-8') as file:
-            file.write(f'เมนู: {order}, จำนวน: {quantity}, ราคา: {total} บาท\n')
+            file.write(f'{timestamp} เมนู: {order}, จำนวน: {quantity}, ราคา: {total} บาท\n')
     except Exception as e:
         print(f'เกิดข้อผิดพลาด! บันทึกไฟล์ไม่ได้: {e}')
 while True:
@@ -60,6 +72,7 @@ while True:
 
     elif order.upper() == 'END':
         print('--- โปรแกรม POS ร้านชานม ---')
+        print(f'--- {get_datetime()} ---')
         print(f'--- ยอดขายรวมวันนี้ {grand_total} บาท จำนวน {total_quantity} แก้ว  ---')
         break
 
