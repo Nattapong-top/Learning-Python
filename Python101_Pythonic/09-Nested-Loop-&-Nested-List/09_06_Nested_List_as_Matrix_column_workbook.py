@@ -151,44 +151,69 @@ print(sum_column(n_list))
 
 
 
+n_list = [
+    [1, 5, 3],
+    [4, 2],
+    [9, 1, 7, 8]
+]
+
+
+
 '''
 Exercise C2 — ColumnMax
-โจทย์
-
-คืน list ที่เก็บ ค่ามากที่สุดของแต่ละคอลัมน์
+โจทย์ คืน list ที่เก็บ ค่ามากที่สุดของแต่ละคอลัมน์
 
 🧠 วิธีคิด Logic
-
 Input
-
 nested list
 
 Output
-
 list ค่ามากสุดของแต่ละคอลัมน์
 
 Logic
-
 ทุกช่องต้องถูกตรวจ
-
 คอลัมน์เป็นตัวตั้ง → index-driven
 
 Edge cases
-
 matrix ว่าง
-
 บางคอลัมน์มีค่าแค่บางแถว
-
 not int
-
 ลำดับการเช็ก
 
 หา max column count
-
 เตรียม list ค่าเริ่มต้น (เช่น None)
-
 loop แถว → loop index → เปรียบเทียบค่า
+'''
+def max_column_count(n_list:list)-> list:
+   result = []
+   if not n_list:
+      return result
 
+   len_max = 0
+   for row in n_list:
+         if len(row) > len_max:
+            len_max = len(row)
+
+   result = [None] * len_max
+
+   for row in n_list:
+      for idx in range(len(row)):
+         value = row[idx]
+         if isinstance(value, int):
+            if result[idx] is None or value > result[idx]:
+               result[idx] = value
+   return result
+print(max_column_count(n_list))
+
+# def max_column_pythonic(n_list:list) -> list:
+#    return list(max( 
+#       m
+#       for row in n_list
+#       for idx in range(len(row))
+#       if row[idx]
+#    ))
+
+'''
 Exercise C3 — ColumnCountEven
 โจทย์
 
