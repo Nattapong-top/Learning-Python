@@ -38,19 +38,21 @@ def get_price_order(order:str,quantity:int) -> int:
 
 def show_summary(order, quantity, total, change):
     # 4. แสดงผล (Output)
-    print("-" * 20) # ขีดเส้นกั้นสวยๆ
-    print(f'--- {get_datetime()} ---')
-    print(f"คุณสั่ง {order} จำนวน {quantity} แก้ว")
-    print(f"เงินทอน {'-'if change == 0 else change} บาท")
-    print(f"ราคารวมทั้งหมด {total} บาท")
-    print("-" * 20)
+    print("\n"+ '=' * 30) # ขีดเส้นกั้นสวยๆ
+    print(f"{'ใบเสร็จรับเงิน':^30}")
+    print(f'{get_datetime():^30}')
+    print("-" * 30) # ขีดเส้นกั้นสวยๆ
+    print(f"{order:15} x {quantity:>2} {total:>9} บาท")
+    print(f"{'เงินทอน':<22} {change:>7} บาท")
+    print(f"ราคารวมทั้งหมด {total:>16} บาท")
+    print("=" * 30)
 
 
 def save_sales_log(order, quantity, total):
     try:
         timestamp = get_datetime()
         # --- ส่วน GPS หาที่อยู่ไฟล์ ---
-        script_path = os.path.abspath(__file__) 
+        script_path = os.getcwd()
         current_folder = os.path.dirname(script_path)
         file_path = os.path.join(current_folder, 'sales_log.txt')
         # ---------------------------
@@ -75,15 +77,39 @@ def get_culcalate_money(total:int):
         else:
             print('ใส่เป็นตัวเลขเท่านั้นครับ')
 
-def main_menu():
+def selected_menu(keys_idx:list):
+    while True:
+        choice_str = input(f'เลือกเมนู: 1 - {len(keys_idx)} ("END" Exit): ')
         
+        if choice_str.isdigit():
+            choice = int(choice_str)
+            if 0< choice <= len(keys_idx):
+                selected_menu = keys_idx[choice-1]
+                print(f'คุณเลือก: {selected_menu} ราคา:{menu[selected_menu]}')
+                return selected_menu
+            else:
+                print('เลขเมนูไม่อยู่ในรายการครับ\n')
+        elif choice_str.upper() == "END":
+            return choice_str
+        else:
+            print('ใส่เป็นตัวเลขเท่านั้นครับ\n')
+
+
+def main_menu():
     total_quantity = 0
     grand_total = 0
     
     while True:
         # 2. รับออเดอร์ (Input)
-        print("รายการเมนู:", menu) # โชว์เมนูให้ลูกค้าดูก่อน
-        order = input("รับเมนูอะไรดีครับ: ")
+        keys_idx = list(menu.keys())
+
+        print('\n--- ร้านชานม ไข่มุก ยินดีตอนรับครับ ---')
+        print("-------- รายการเมนู --------") # โชว์เมนูให้ลูกค้าดูก่อน
+        for idx, key in enumerate(keys_idx):
+            print(f'{idx+1:>3}. เมนู: {key:<10} ราคา:{menu[key]:>5}')
+
+        order = selected_menu(keys_idx)
+
         if order in menu:
             quantity = get_quantity()
             total = get_price_order(order, quantity)
@@ -95,35 +121,13 @@ def main_menu():
 
 
         elif order.upper() == 'END':
-            print('--- โปรแกรม POS ร้านชานม ---')
+            print('\n--- โปรแกรม POS ร้านชานม ---')
             print(f'--- {get_datetime()} ---')
             print(f'--- ยอดขายรวมวันนี้ {grand_total} บาท จำนวน {total_quantity} แก้ว  ---')
             break
 
         else:
             print(f'{order} ไม่มีในรายการครับ')
-# main_menu()
+main_menu()
 
 
-def function_test_selected():
-    
-    keys_idx = list(menu.keys())
-
-    for idx, key in enumerate(keys_idx):
-        print(f'{idx+1:>3}. เมนู: {key:<10} ราคา:{menu[key]:>5}')
-
-    choice_str = input(f'เลือกเมนู: 1 - {len(keys_idx)}: ')
-    
-    if choice_str.isdigit():
-        choice = int(choice_str)
-        if 0< choice <= len(keys_idx):
-            selected_menu = keys_idx[choice-1]
-            print(f'คุณเลือก: {selected_menu} ราคา:{menu[selected_menu]}')
-            return selected_menu
-        else:
-            print('เลขเมนูไม่อยู่ในรายการครับ')
-    else:
-        print('กรุณากด ตัวเลขเท่านั้นครับ')
-
-
-# print(function_test_selected())
