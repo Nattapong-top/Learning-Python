@@ -215,42 +215,61 @@ print(max_column_count(n_list))
 
 '''
 Exercise C3 — ColumnCountEven
-โจทย์
-
-คืน list ที่เก็บ จำนวนเลขคู่ของแต่ละคอลัมน์
-
+โจทย์ คืน list ที่เก็บ จำนวนเลขคู่ของแต่ละคอลัมน์
 🧠 วิธีคิด Logic
+Input nested list
 
-Input
+Output list จำนวนเลขคู่ในแต่ละคอลัมน์
 
-nested list
+Logic ทุกช่องต้องถูกนับ ใช้ index เพื่อรู้คอลัมน์
 
-Output
+Edge cases matrix ว่าง บางคอลัมน์ไม่มีเลขคู่ not int
 
-list จำนวนเลขคู่ในแต่ละคอลัมน์
+ลำดับการเช็ก หา max column สร้าง list counter loop แถว → loop index → เช็ก even → เพิ่ม counter
+'''
+n_list = [[2,2,2,2],
+          [1,1,1,1],
+          [4,4,4,4],
+          [6,6,6,6,10]]
 
-Logic
+def ColumnCountEven(n_list:list)-> list:
+   print(n_list)
+   even_list = []
+   max_row = 0
+   for row in n_list:
+      if len(row) > max_row:
+         max_row = len(row)
+   even_list = [0] * max_row
 
-ทุกช่องต้องถูกนับ
+   for row in n_list:
+      for idx in range(len(row)):
+         val = row[idx]
+         if isinstance(val, int) and val % 2 == 0:
+            even_list[idx] += 1
+   return even_list
+print(ColumnCountEven(n_list))
 
-ใช้ index เพื่อรู้คอลัมน์
+from itertools import zip_longest
 
-Edge cases
+def ColumnCountEvenPythonnic(n_list):
+   result = []
+   # หมุน matrix ไห้ได้ column ละ 1 tuple
+   for col in zip_longest(*n_list, fillvalue=None):
+      count = 0
+      for val in col:
+         if isinstance(val, int) and val % 2 == 0:
+            count += 1
+      result.append(count)
+   return result
+ColumnCountEvenPythonnic(n_list)
 
-matrix ว่าง
 
-บางคอลัมน์ไม่มีเลขคู่
 
-not int
 
-ลำดับการเช็ก
 
-หา max column
 
-สร้าง list counter
 
-loop แถว → loop index → เช็ก even → เพิ่ม counter
-
+'''
 Exercise C4 — ColumnAverage
 โจทย์
 
