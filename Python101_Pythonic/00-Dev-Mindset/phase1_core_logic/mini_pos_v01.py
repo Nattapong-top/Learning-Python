@@ -102,4 +102,28 @@ def main_menu():
 
         else:
             print(f'{order} ไม่มีในรายการครับ')
-main_menu()
+# main_menu()
+
+
+def function_test_selected():
+    
+    keys_idx = list(menu.keys())
+
+    for idx, key in enumerate(keys_idx):
+        print(f'{idx+1:>3}. เมนู: {key:<10} ราคา:{menu[key]:>5}')
+
+    choice_str = input(f'เลือกเมนู: 1 - {len(keys_idx)}: ')
+    
+    if choice_str.isdigit():
+        choice = int(choice_str)
+        if 0< choice <= len(keys_idx):
+            selected_menu = keys_idx[choice-1]
+            print(f'คุณเลือก: {selected_menu} ราคา:{menu[selected_menu]}')
+            return selected_menu
+        else:
+            print('เลขเมนูไม่อยู่ในรายการครับ')
+    else:
+        print('กรุณากด ตัวเลขเท่านั้นครับ')
+
+
+# print(function_test_selected())
