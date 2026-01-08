@@ -264,48 +264,66 @@ def ColumnCountEvenPythonnic(n_list):
 ColumnCountEvenPythonnic(n_list)
 
 
-
-
-
-
-
 '''
 Exercise C4 — ColumnAverage
-โจทย์
-
-คืน list ค่าเฉลี่ยของแต่ละคอลัมน์
+โจทย์ คืน list ค่าเฉลี่ยของแต่ละคอลัมน์
 (ถ้าคอลัมน์ไหนไม่มี int → ให้ค่า 0)
 
 🧠 วิธีคิด Logic
+Input nested list
 
-Input
+Output list ค่าเฉลี่ย (float / int)
 
-nested list
+Logic ต้องเก็บ ผลรวม + จำนวน ต่อคอลัมน์ Edge cases matrix ว่าง คอลัมน์บางอันไม่มีค่า not int 
 
-Output
+ลำดับการเช็ก เตรียม 2 list (sum / count) loop แถว → loop index → สะสม คำนวณ average ทีหลัง
+'''
+n_list = [[2,2,-2,2],
+          [1,-1,1,1],
+          [4,4,4,4],
+          [6,6,-6,6,10.45],
+          ['df','345','dg']]
 
-list ค่าเฉลี่ย (float / int)
+def ColumnAverage(n_list:list) -> float:
+   result = []
+   if not n_list:
+      return 0
+   max_cols = max(len(m) for m in n_list)
 
-Logic
+   sum_cols = [0] * max_cols
+   count_cols = [0] * max_cols
 
-ต้องเก็บ ผลรวม + จำนวน ต่อคอลัมน์
+   for row in n_list:
+      for i in range(len(row)):
+         val = row[i]
+         if isinstance(val, int):
+            sum_cols[i] += val
+            count_cols[i] += 1
+            
+   for i in range(max_cols):
+      if count_cols[i] == 0:
+         result.append(0)
+      else:
+         result.append(sum_cols[i] / count_cols[i])
 
-Edge cases
+   return result
+print(ColumnAverage(n_list))
 
-matrix ว่าง
+def ColumnAverage_pythonic(n_list):
+    max_cols = max((len(row) for row in n_list), default=0)
 
-คอลัมน์บางอันไม่มีค่า
+    result = []
+    for i in range(max_cols):
+        col_vals = [
+            row[i]
+            for row in n_list
+            if i < len(row) and isinstance(row[i], int)
+        ]
+        result.append(sum(col_vals) / len(col_vals) if col_vals else 0)
+    return result
 
-not int
 
-ลำดับการเช็ก
-
-เตรียม 2 list (sum / count)
-
-loop แถว → loop index → สะสม
-
-คำนวณ average ทีหลัง
-
+'''
 Exercise C5 — ColumnNonZero
 โจทย์
 
