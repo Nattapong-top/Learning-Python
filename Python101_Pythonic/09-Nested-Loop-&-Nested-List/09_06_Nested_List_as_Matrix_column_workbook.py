@@ -365,3 +365,31 @@ loop แถว → loop index → เช็กค่า ≠ 0
 
 Column = บังคับให้ใช้ index อย่างมีเหตุผล
 ใครผ่านชุดนี้ = เข้าใจ Matrix จริง'''
+
+def ColumnNonZero(n_list: list):
+    if not n_list:
+        return []
+
+    max_cols = max(len(row) for row in n_list)
+
+    count_cols = [0] * max_cols
+
+    for row in n_list:
+        for i in range(len(row)):
+            val = row[i]
+            if isinstance(val, int) and val != 0:
+                count_cols[i] += 1
+
+    return count_cols
+
+def ColumnNonZero_pythonic(n_list):
+    max_cols = max((len(row) for row in n_list), default=0)
+
+    return [
+        sum(
+            1
+            for row in n_list
+            if i < len(row) and isinstance(row[i], int) and row[i] != 0
+        )
+        for i in range(max_cols)
+    ]
